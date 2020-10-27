@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">FoodManChu</string>
+    <string name="add_recipe">Add Recipe</string>
+    <string name="recipe_name">Recipe Name</string>
+    <string name="description">Description</string>
+    <string name="instructions">Instructions</string>
+    <string name="prep_time">Prep Time</string>
+    <string name="category">Category</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="title_activity_recipe_details">RecipeDetails</string>
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+    <string name="details_recipe_name"><u>Recipe Name</u></string>
+    <string name="details_category"><u>Category</u></string>
+    <string name="details_prep_time"><u>Prep Time</u></string>
+    <string name="details_prep_time_value"><u>%1$s</u></string>
+    <string name="details_description"><u>Description</u></string>
+    <string name="details_instructions"><u>Instructions</u></string>
+    <string name="details_ingredients"><u>Ingredients</u></string>
+    <string name="add_ingredients">Ingredients: %1$s</string>
+    <string name="text_button">ADD INGREDIENTS</string>
+    <string name="search_ingredients">Search Ingredients...</string>
+    <string name="add_ingredient">Add Ingredient</string>
+    <string name="edit_recipe_ingredients">edit recipe ingredients</string>
+    <string name="filter_recipe">Filter</string>
+    <string name="recipe_keywords">Recipe Keywords</string>
+    <string name="filter_search">Search...</string>
+    <string name="filter_search_button">Search</string>
+    <string name="filter_by">Filter By:</string>
+    <string name="all_recipes">All Recipes</string>
+</resources>
