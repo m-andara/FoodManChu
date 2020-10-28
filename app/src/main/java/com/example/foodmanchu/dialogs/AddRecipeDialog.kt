@@ -1,4 +1,4 @@
-package com.example.foodmanchu
+package com.example.foodmanchu.dialogs
 
 import android.app.AlertDialog
 import android.app.Dialog
@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import androidx.fragment.app.DialogFragment
+import com.example.foodmanchu.R
 import com.example.foodmanchu.databinding.FragmentAddRecipeBinding
 import com.example.foodmanchu.models.Category
 import com.example.foodmanchu.models.Recipe

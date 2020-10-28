@@ -1,12 +1,13 @@
 package com.example.foodmanchu
 
-import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.foodmanchu.databinding.ActivityRecipeDetailsBinding
+import com.example.foodmanchu.dialogs.EditRecipeDialog
 import com.example.foodmanchu.models.Ingredient
 import com.example.foodmanchu.models.Recipe
+import com.example.foodmanchu.repository.FoodManChuDatabase
 import com.example.foodmanchu.repository.FoodManChuRepository
 
 class RecipeDetailsActivity : AppCompatActivity() {
@@ -18,10 +19,7 @@ class RecipeDetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityRecipeDetailsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        GetRecipeIngredients() { ingredients ->
-            setUI(FoodManChuRepository.getCurrentRecipe(), ingredients)
-        }.execute()
+        updateRecipe()
     }
 
     private fun setUI(recipe: Recipe, ingredients: List<Ingredient>) {
@@ -46,7 +44,9 @@ class RecipeDetailsActivity : AppCompatActivity() {
     }
 
     private fun editDialog() {
-        EditRecipeDialog.create().show(supportFragmentManager, "Edit Recipe Dialog")
+        EditRecipeDialog.create{
+            updateRecipe()
+        }.show(supportFragmentManager, "Edit Recipe Dialog")
     }
 
     private fun deleteRecipe() {
@@ -73,5 +73,31 @@ class RecipeDetailsActivity : AppCompatActivity() {
             }
         }
         finish()
+    }
+
+    private fun updateRecipe() {
+        super.onResume()
+        UpdateRecipe{
+            GetRecipeIngredients() { ingredients ->
+                setUI(FoodManChuRepository.getCurrentRecipe(), ingredients)
+            }.execute()
+        }.execute()
+    }
+}
+
+class UpdateRecipe(private val onFinished: () -> Unit): AsyncTask<Void, Void, Recipe>() {
+
+    private var database: FoodManChuDatabase = FoodManChuRepository.getDb()
+    override fun doInBackground(vararg params: Void?): Recipe? {
+        val recipe = database?.foodManChuDao()?.getRecipe(FoodManChuRepository.getCurrentRecipe().recipeId)
+        return recipe
+    }
+
+    override fun onPostExecute(result: Recipe?) {
+        super.onPostExecute(result)
+        if (result != null) {
+            FoodManChuRepository.setCurrentRecipe(result)
+        }
+        onFinished()
     }
 }

@@ -1,4 +1,4 @@
-package com.example.foodmanchu
+package com.example.foodmanchu.dialogs
 
 import android.app.AlertDialog
 import android.app.Dialog
@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.DialogFragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.foodmanchu.adapters.IngredientsAdapter
 import com.example.foodmanchu.databinding.FragmentAddIngredientBinding
 import com.example.foodmanchu.models.Ingredient
 import com.example.foodmanchu.repository.FoodManChuDatabase
@@ -65,9 +66,8 @@ class AddIngredientDialog(): DialogFragment() {
                 visibility = if(filteredIngredients.isEmpty()) View.VISIBLE
                 else View.INVISIBLE
                 setOnClickListener {
-                    addIngredient(binding.searchEditText.text.toString())
-                    binding.searchEditText.setText("")
                     binding.addIngredients.visibility = View.INVISIBLE
+                    addIngredient(binding.searchEditText.text.toString())
                 }
             }
         }
@@ -97,9 +97,10 @@ class AddIngredientDialog(): DialogFragment() {
     }
 
     private fun addIngredient(ingredientName: String) {
+        binding.searchEditText.setText("")
         AsyncTask.execute {
             val newIngredient = Ingredient(
-                    ingredient = ingredientName,
+                    ingredient = ingredientName.capitalize(),
                     isBaseIngredient = false
             )
             database?.foodManChuDao()?.add(newIngredient)

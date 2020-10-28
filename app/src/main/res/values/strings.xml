@@ -31,4 +31,5 @@
     <string name="filter_search_button">Search</string>
     <string name="filter_by">Filter By:</string>
     <string name="all_recipes">All Recipes</string>
+    <string name="edit_available_ingredients">edit available ingredients</string>
 </resources>

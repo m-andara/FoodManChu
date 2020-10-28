@@ -1,4 +1,4 @@
-package com.example.foodmanchu
+package com.example.foodmanchu.dialogs
 
 import android.app.AlertDialog
 import android.app.Dialog
@@ -7,8 +7,8 @@ import android.text.InputType
 import android.view.LayoutInflater
 import android.view.View
 import androidx.fragment.app.DialogFragment
+import com.example.foodmanchu.R
 import com.example.foodmanchu.databinding.FragmentFilterRecipesBinding
-import com.example.foodmanchu.models.Recipe
 
 class FilterRecipeDialog: DialogFragment() {
 

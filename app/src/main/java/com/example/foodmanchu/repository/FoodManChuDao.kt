@@ -35,11 +35,17 @@ interface FoodManChuDao {
     @Query("SELECT * FROM ingredient")
     fun getAllIngredients(): List<Ingredient>
 
+    @Query("SELECT * FROM ingredient WHERE isbaseingredient = 0")
+    fun getAllUserIngredients(): List<Ingredient>
+
     @Query("SELECT * FROM recipe WHERE recipeId = :recipeId")
     fun getRecipe(recipeId: Int): Recipe
 
     @Insert
     fun setRecipeIngredients(recipe: RecipeWithIngredients)
+
+    @Query("SELECT * FROM ingredient WHERE ingredientId = :ingredient")
+    fun getIngredientById(ingredient: Int): Ingredient
 
     @Query("SELECT * FROM ingredient WHERE ingredientId IN (SELECT ingredientId FROM recipewithingredients WHERE recipeId = :recipeId)")
     fun getAllRecipeIngredients(recipeId: Int): List<Ingredient>

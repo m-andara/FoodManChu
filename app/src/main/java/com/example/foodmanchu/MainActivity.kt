@@ -6,7 +6,10 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.foodmanchu.adapters.RecipesAdapter
 import com.example.foodmanchu.databinding.ActivityMainBinding
+import com.example.foodmanchu.dialogs.AddRecipeDialog
+import com.example.foodmanchu.dialogs.FilterRecipeDialog
 import com.example.foodmanchu.models.Recipe
 import com.example.foodmanchu.models.RecipeWithIngredients
 import com.example.foodmanchu.repository.FoodManChuDatabase

@@ -1,4 +1,4 @@
-package com.example.foodmanchu
+package com.example.foodmanchu.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
